@@ -104,13 +104,14 @@ server <- function(input, output) {
             }
         )
         
-        if(input$disp == "head") {
-            return(head(df,3))
-        }
-        else {
-            return(df %>% tail(3) )
-        }
-        
+        # if(input$disp == "head") {
+        #     return(head(df,3))
+        # }
+        # else {
+        #     return(df %>% tail(3) )
+        # }
+        ht <- input$disp
+        get_wizzad_data(df, ht)
     })
     
     
