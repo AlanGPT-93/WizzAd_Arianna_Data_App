@@ -13,6 +13,10 @@ library(stringr)
 library(readxl)
 library(writexl)
 
+# External files
+
+source("helpers/arianna.R")
+source("helpers/wizzad.R")
 
 # Define UI for data upload app ----
 ui <- fluidPage(
