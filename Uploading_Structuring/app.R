@@ -66,9 +66,17 @@ ui <- fluidPage(
             radioButtons("disp", "Display",
                          choices = c(Head = "head",
                                      Describe = "describe"),
-                         selected = "head")
+                         selected = "head"),
+            
+            # Horizontal line ----
+            tags$hr(),
+            
+            # Downdload Button
+            downloadButton("dl", "Download")
             
         ),
+        
+            
         
         # Main panel for displaying outputs ----
         mainPanel(
@@ -84,7 +92,8 @@ ui <- fluidPage(
 # Define server logic to read selected file ----
 server <- function(input, output) {
     
-    output$contents <- renderTable({
+    # reactive data
+    Data <- reactive({
         
         # input$file1 will be NULL initially. After the user selects
         # and uploads a file, head of that data file by default,
@@ -103,15 +112,15 @@ server <- function(input, output) {
                 stop(safeError(e))
             }
         )
-        
-        # if(input$disp == "head") {
-        #     return(head(df,3))
-        # }
-        # else {
-        #     return(df %>% tail(3) )
-        # }
+        # ht is head or tail from data
         ht <- input$disp
         get_wizzad_data(df, ht)
+    })
+    
+    # render table
+    output$contents <- renderTable({
+        Data() 
+       
     })
     
     
