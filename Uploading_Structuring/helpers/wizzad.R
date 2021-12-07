@@ -1,4 +1,4 @@
-get_wizzad_data <- function(my_data, ht){
+get_wizzad_data <- function(my_data){
   
   # change col names to upper and adding 2 new columns
   colnames(my_data) <- my_data %>% colnames() %>% toupper()
@@ -100,12 +100,6 @@ get_wizzad_data <- function(my_data, ht){
   copetitive20_21$ADVERTISER[tf] <- "BOOST"
   
   
-  if(ht == "head") {
-      return(head(copetitive20_21,3))
-  }
-  else {
-      return(copetitive20_21 %>% tail(3) )
-  }
+  return(copetitive20_21)
   
-    
 }

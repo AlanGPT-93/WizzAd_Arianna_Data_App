@@ -65,7 +65,7 @@ ui <- fluidPage(
             # Input: Select number of rows to display ----
             radioButtons("disp", "Display",
                          choices = c(Head = "head",
-                                     Describe = "describe"),
+                                     Tail = "tail"),
                          selected = "head"),
             
             # Horizontal line ----
@@ -97,29 +97,46 @@ server <- function(input, output) {
         
         # input$file1 will be NULL initially. After the user selects
         # and uploads a file, head of that data file by default,
-        # or all rows if selected, will be shown.
+        # or tail if selected, will be shown.
         
-        req(input$file1)
+        file1 <- input$file1
+        req(file1)
         
-        # when reading semicolon separated files,
-        # having a comma separator causes `read.csv` to error
+        # reading xlsx files
         tryCatch(
             {
-                df <- read_excel(input$file1$datapath)
+                df <- read_excel(file1$datapath)
             },
             error = function(e) {
                 # return a safeError if a parsing error occurs
                 stop(safeError(e))
             }
         )
-        # ht is head or tail from data
-        ht <- input$disp
-        get_wizzad_data(df, ht)
+        
+        # deciding which data select depending on file's name
+        if(str_detect( tolower(file1$name),"wizzad")) {
+            get_wizzad_data(df)
+        }
+        else {
+            get_arianna_data(df)
+        }
+        
+
     })
     
     # render table
     output$contents <- renderTable({
-        Data() 
+        
+        # ht is head or tail from data
+        ht <- input$disp
+        
+        if(ht == "head") {
+           head(Data() ,3)
+        }
+        else {
+            Data()  %>% tail(3) 
+        }
+        
        
     })
     
