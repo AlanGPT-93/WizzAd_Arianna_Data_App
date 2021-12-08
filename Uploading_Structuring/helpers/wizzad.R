@@ -28,8 +28,8 @@ get_wizzad_data <- function(my_data){
   ### INSTITUTIONAL
   
   institutional <- c("CLARO: INSTITUTIONAL", "LIBERTY: INSTITUTIONAL", # eran residence
-                     'T-MOBILE: INSTITUTIONAL',"AT&T: INSTITUTIONAL",'AT&T: CO BRAND')   # eran mobility
-  
+                     'T-MOBILE: INSTITUTIONAL',"AT&T: INSTITUTIONAL",'AT&T: CO BRAND', # eran mobility
+                     'LIBERTY MOBILE')
   
   institutional_f <- my_data$BRAND %in% institutional
   
