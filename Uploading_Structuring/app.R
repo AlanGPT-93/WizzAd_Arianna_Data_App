@@ -98,9 +98,9 @@ server <- function(input, output) {
         # input$file1 will be NULL initially. After the user selects
         # and uploads a file, head of that data file by default,
         # or tail if selected, will be shown.
-        
         file1 <- input$file1
         req(file1)
+       
         
         # reading xlsx files
         tryCatch(
@@ -140,7 +140,15 @@ server <- function(input, output) {
        
     })
     
-
+    output$dl <- downloadHandler(
+        
+        filename = function(file1) {
+            file1 <- input$file1
+            file_name <- str_split(file1$name,"_")[[1]][1]
+            paste0("Telecom_Competitive_", file_name, ".xlsx") 
+        },
+        content = function(file) {write_xlsx(Data(), path = file)}
+    )
     
 }
 
