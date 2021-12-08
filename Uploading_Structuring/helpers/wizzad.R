@@ -87,7 +87,7 @@ get_wizzad_data <- function(my_data){
   copetitive20_21 <- my_data %>% bind_rows(copetitive_2020)
   
   ## CHANGING CL NAMES AND COMPETITORS NAME
-  colnames(copetitive20_21) <- c("ADVERTISER", "Brand", "Date" ,"Media Type", "Spend", "Category","DUPLICATED")
+  colnames(copetitive20_21) <- c("ADVERTISER", "Brand", "Media Type", "Date" , "Spend", "Category","DUPLICATED")
   
   
   tf <- copetitive20_21$ADVERTISER == "DISH NETWORK"

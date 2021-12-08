@@ -13,7 +13,7 @@ library(stringr)
 library(readxl)
 library(writexl)
 
-# External files
+# Helpers, external files
 
 source("helpers/arianna.R")
 source("helpers/wizzad.R")
@@ -22,13 +22,13 @@ source("helpers/wizzad.R")
 ui <- fluidPage(
     
     # App title ----
-    titlePanel("Uploading Files"),
+    titlePanel("Uploading and Downloading Files"),
     
     # Sidebar layout with input and output definitions ----
     sidebarLayout(
         
         # Sidebar panel for inputs ----
-        sidebarPanel(
+        sidebarPanel( width = 3,
             
             # Input: Select a file ----
             fileInput("file1", "Choose xls or xlsx File",
@@ -131,16 +131,16 @@ server <- function(input, output) {
         ht <- input$disp
         
         if(ht == "head") {
-           head(Data() ,3)
+           head(Data() ,5)
         }
         else {
-            Data()  %>% tail(3) 
+            Data()  %>% tail(5) 
         }
         
        
     })
     
-    
+
     
 }
 
