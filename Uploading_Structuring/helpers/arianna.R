@@ -7,7 +7,7 @@ get_arianna_data <- function(my_data){
   # Change Advertiser's name
   my_data$Advertiser <- my_data$Advertiser %>% 
     str_replace_all(c("LIBERTY CABLEVISION" = "LIBERTY",
-                      "AMERICA MOVIL" = "CLARO","DISH NETWORK" = "DISH"))
+                      "AMERICA MOVIL" = "CLARO","DISH NETWORK" = "DISH", "HOME FI" = "AERONET"))
   
   aux_b <- my_data$`Brand_Context_Variables` %>% str_detect("LIBERTY / AT&T")
   my_data$Advertiser[aux_b] <- "AT&T"
@@ -21,7 +21,8 @@ get_arianna_data <- function(my_data){
          'DISH PUERTO RICO', 'DISH PUERTO RICO: HOPPER',	'HUGHESNET', 'LIBERTY: BUSINESS', 'LIBERTY: GO',	
          'LIBERTY CABLEVISION', 'LIBERTY: ALL TELECOM PROD OFFERTS', 'LIBERTY / AT&T',	
          'T MOBILE C: BUSINESS SERVICES',	'T MOBILE C', 'T MOBILE: OFFERT', 'T MOBILE C: ACCESORIOS',
-         'WORLDNET','LIBERTY MOBILITY: PREPAID','LIBERTY MOBILITY: OFFERT', 'LIBERTY MOBILITY')
+         'WORLDNET','LIBERTY MOBILITY: PREPAID','LIBERTY MOBILITY: OFFERT', 'LIBERTY MOBILITY',
+         'HOME FI')
   
   b <- c('AT&T: BUSINESS','AT&T: CABLE',	'AT&T: CABLE',	'AT&T: INSTITUTIONAL',	
          'AT&T: POST PAID', 'AT&T: POST PAID', 'AT&T: PREPAID',	'CLARO: INSTITUTIONAL',	
@@ -30,7 +31,8 @@ get_arianna_data <- function(my_data){
          'DISH: INSTITUTIONAL', 'DISH NETWORK: HOPPER', 'HUGHESNET: INTERNET',	'LIBERTY: BUSINESS',	'LIBERTY: GO',	
          'LIBERTY: INSTITUTIONAL', 'LIBERTY: MULTIPROD',	'AT&T: CO BRAND', 'T-MOBILE: BUSINESS',	
          'T-MOBILE: INSTITUTIONAL', 'T-MOBILE: POST PAID', 'T-MOBILE: POST PAID',
-         'WORLDNET: INTERNET','LIBERTY: PREPAID','LIBERTY: POST PAID', 'LIBERTY MOBILITY')
+         'WORLDNET: INTERNET','LIBERTY: PREPAID','LIBERTY: POST PAID', 'LIBERTY MOBILITY',
+         'AERONET: INTERNET')
   
   # Create a DF with a & b
   data_brand_aux <- data.frame("Brand_Context_Variables" = a, "Brand_Change" = b)
