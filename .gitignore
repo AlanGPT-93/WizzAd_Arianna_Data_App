@@ -1,4 +1,6 @@
 # Ignore all xlsx files
 *.xlsx
+*.Rhistory
+*rsconnect
 
 
