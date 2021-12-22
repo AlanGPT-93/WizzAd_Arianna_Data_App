@@ -158,7 +158,8 @@ get_arianna_data <- function(my_data){
   copetitive$enhanced_category[aux_b] <- "Business"
   
   ### Mobility
-  aux_b <- str_detect(copetitive$Target, "Mobility") & str_detect(copetitive$Category, "Mobility")
+  #aux_b <- str_detect(copetitive$Target, "Mobility") & str_detect(copetitive$Category, "Mobility")
+  aux_b <- str_detect(copetitive$Target, "PEOPLE") & str_detect(copetitive$Category, "Mobility")
   aux_b %>% sum()
   copetitive$enhanced_category[aux_b] <- "Mobility"
   
