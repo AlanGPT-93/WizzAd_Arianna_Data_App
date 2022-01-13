@@ -9,7 +9,8 @@ get_arianna_data <- function(my_data){
     str_replace_all(c("LIBERTY CABLEVISION" = "LIBERTY",
                       "AMERICA MOVIL" = "CLARO","DISH NETWORK" = "DISH", "HOME FI" = "AERONET"))
   
-  aux_b <- my_data$`Brand_Context_Variables` %>% str_detect("LIBERTY / AT&T")
+  #aux_b <- my_data$`Brand_Context_Variables` %>% str_detect("LIBERTY / AT&T")
+  aux_b <- my_data$Brand_Context %>% str_detect("LIBERTY / AT&T")
   my_data$Advertiser[aux_b] <- "AT&T"
   
   
@@ -22,7 +23,7 @@ get_arianna_data <- function(my_data){
          'LIBERTY CABLEVISION', 'LIBERTY: ALL TELECOM PROD OFFERTS', 'LIBERTY / AT&T',	
          'T MOBILE C: BUSINESS SERVICES',	'T MOBILE C', 'T MOBILE: OFFERT', 'T MOBILE C: ACCESORIOS',
          'WORLDNET','LIBERTY MOBILITY: PREPAID','LIBERTY MOBILITY: OFFERT', 'LIBERTY MOBILITY',
-         'HOME FI')
+         'HOME FI','LIBERTY MOBILITY: ACCESORIOS')
   
   b <- c('AT&T: BUSINESS','AT&T: CABLE',	'AT&T: CABLE',	'AT&T: INSTITUTIONAL',	
          'AT&T: POST PAID', 'AT&T: POST PAID', 'AT&T: PREPAID',	'CLARO: INSTITUTIONAL',	
@@ -32,13 +33,15 @@ get_arianna_data <- function(my_data){
          'LIBERTY: INSTITUTIONAL', 'LIBERTY: MULTIPROD',	'AT&T: CO BRAND', 'T-MOBILE: BUSINESS',	
          'T-MOBILE: INSTITUTIONAL', 'T-MOBILE: POST PAID', 'T-MOBILE: POST PAID',
          'WORLDNET: INTERNET','LIBERTY: PREPAID','LIBERTY: POST PAID', 'LIBERTY MOBILITY',
-         'AERONET: INTERNET')
+         'AERONET: INTERNET', 'LIBERTY: POST PAID')
   
   # Create a DF with a & b
-  data_brand_aux <- data.frame("Brand_Context_Variables" = a, "Brand_Change" = b)
+  #data_brand_aux <- data.frame("Brand_Context_Variables" = a, "Brand_Change" = b)
+  data_brand_aux <- data.frame("Brand_Context" = a, "Brand_Change" = b)
   
   # Join my_data with data_brand_aux on Brand_Context_Variables
-  my_data <- my_data %>% left_join(data_brand_aux, by = "Brand_Context_Variables")
+  #my_data <- my_data %>% left_join(data_brand_aux, by = "Brand_Context_Variables")
+  my_data <- my_data %>% left_join(data_brand_aux, by = "Brand_Context")
   
   # change col names to upper and adding 2 new columns
   my_data$Category <- ""
