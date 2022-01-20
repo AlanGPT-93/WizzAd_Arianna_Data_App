@@ -80,7 +80,7 @@ get_wizzad_data <- function(my_data){
   
   ## Reading 2020
   copetitive_2020 <- read_excel( paste0( "data/",
-                                         "Telecom_Competitive_WizzAd_","20_21",".xlsx"), 
+                                         "Telecom_Competitive_WizzAd_","All",".xlsx"), 
                                  sheet = paste0("Sheet1") )
   
   ## Union 20-21
