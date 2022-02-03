@@ -156,23 +156,23 @@ get_arianna_data <- function(my_data){
   copetitive$enhanced_category <- ""
   
   ### Business
-  aux_b <- str_detect(copetitive$Target, "Business") & str_detect(copetitive$Category, "Business")
+  aux_b <- str_detect(copetitive$Target, "PEOPLE 25") & str_detect(copetitive$Category, "Business")
   aux_b %>% sum()
   copetitive$enhanced_category[aux_b] <- "Business"
   
   ### Mobility
   #aux_b <- str_detect(copetitive$Target, "Mobility") & str_detect(copetitive$Category, "Mobility")
-  aux_b <- str_detect(copetitive$Target, "PEOPLE") & str_detect(copetitive$Category, "Mobility")
+  aux_b <- str_detect(copetitive$Target, "PEOPLE 18+") & str_detect(copetitive$Category, "Mobility")
   aux_b %>% sum()
   copetitive$enhanced_category[aux_b] <- "Mobility"
   
   ## Residence
-  aux_b <- str_detect(copetitive$Target, "Residence") & str_detect(copetitive$Category, "Residence")
+  aux_b <- str_detect(copetitive$Target, "PEOPLE 25") & str_detect(copetitive$Category, "Residence")
   aux_b %>% sum()
   copetitive$enhanced_category[aux_b] <- "Residence"
   
   ## Institutional
-  aux_b <- str_detect(copetitive$Target, "PEOPLE") & str_detect(copetitive$Category, "Institutional")
+  aux_b <- str_detect(copetitive$Target, "PEOPLE 18+") & str_detect(copetitive$Category, "Institutional")
   aux_b %>% sum()
   copetitive$enhanced_category[aux_b] <- "Institutional"
   

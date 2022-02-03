@@ -45,8 +45,8 @@ get_wizzad_data <- function(my_data){
                  'NEPTUNO: INTERNET', 'AT&T: DTV HBO MAX',
                  'AT&T: DTV PPV', 'AT&T: DTV PROGRAM', 'AT&T: MULTIPROD', 'AERONET: INTERNET',
                  'CLARO: CABLE', 'DISH NETWORK: ANYWHERE', 'DISH NETWORK: CABLE', 'DISH NETWORK: MULTIPROD',
-                 'LIBERTY: EVERYWHERE', 'LIBERTY: PREMIUM CHANNELS','OPTICO: INTERNET', 'PRWIRELESS: INTERNET','WORLDNET: INTERNET',
-                 'CLARO: TV','LIBERTY: CABLE TV', 'OPTICO FIBER')
+                 'LIBERTY: EVERYWHERE', 'LIBERTY: PREMIUM CHANNELS','OPTICO: INTERNET', 'PRWIRELESS: INTERNET',
+                 'WORLDNET: INTERNET','CLARO: TV','LIBERTY: CABLE TV', 'OPTICO FIBER')
   
   residence_f <- my_data$BRAND %in% residence
   
@@ -69,7 +69,7 @@ get_wizzad_data <- function(my_data){
   business <- c('AT&T: BUSINESS', 'CLARO: BUSINESS', 'LIBERTY: BUSINESS',
                 'T-MOBILE: BUSINESS','AERONET: BUSINESS', 'DIRECTV: BUSINESS', 
                 'LIBERTY: BUSINESS MULTIPROD','FUSE: INTERNET','FUSE TELECOM',
-                'WORLDNET: BUSINESS')
+                'WORLDNET: BUSINESS','DM WIRELESS: BUSINESS')
   
   business_f <- my_data$BRAND %in% business
   
