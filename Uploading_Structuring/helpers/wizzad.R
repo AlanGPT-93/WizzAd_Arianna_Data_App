@@ -46,7 +46,8 @@ get_wizzad_data <- function(my_data){
                  'AT&T: DTV PPV', 'AT&T: DTV PROGRAM', 'AT&T: MULTIPROD', 'AERONET: INTERNET',
                  'CLARO: CABLE', 'DISH NETWORK: ANYWHERE', 'DISH NETWORK: CABLE', 'DISH NETWORK: MULTIPROD',
                  'LIBERTY: EVERYWHERE', 'LIBERTY: PREMIUM CHANNELS','OPTICO: INTERNET', 'PRWIRELESS: INTERNET',
-                 'WORLDNET: INTERNET','CLARO: TV','LIBERTY: CABLE TV', 'OPTICO FIBER')
+                 'WORLDNET: INTERNET','CLARO: TV','LIBERTY: CABLE TV', 'OPTICO FIBER',
+                 'KIWISAT: SATELITE')
   
   residence_f <- my_data$BRAND %in% residence
   
@@ -57,7 +58,8 @@ get_wizzad_data <- function(my_data){
                  'AT&T: POST PAID', 'AT&T: PREPAID', 'BOOST: PREPAID',
                  'CLARO: POST PAID', 'CLARO: PREPAID', 'T-MOBILE: INTERNET',
                  'T-MOBILE: POST PAID', 'T-MOBILE: PREPAID','LIBERTY: POST PAID',
-                 'LIBERTY: PREPAID','BOOST: INSTITUTIONAL','SPRINT: POST PAID', 'SPRINT: INSTITUTIONAL')
+                 'LIBERTY: PREPAID','BOOST: INSTITUTIONAL','SPRINT: POST PAID', 'SPRINT: INSTITUTIONAL',
+                 'ENTOUCH WIRELESS: POST PAID','Q LINK WIRELESS: POSTPAID')
   
   mobility_f <- my_data$BRAND %in% mobility
   
@@ -87,8 +89,8 @@ get_wizzad_data <- function(my_data){
   copetitive20_21 <- my_data %>% bind_rows(copetitive_2020)
   
   ## CHANGING CL NAMES AND COMPETITORS NAME
-  colnames(copetitive20_21) <- c("ADVERTISER", "Brand", "Media Type", "Date" , "Month", "Week", "Spend",
-                                 "Category","DUPLICATED")
+  colnames(copetitive20_21) <- c("ADVERTISER", "Brand", "Media Type","Media Owner", "Date" , "Month",
+                                 "Week", "Spend", "Category","DUPLICATED")
   
   
   tf <- copetitive20_21$ADVERTISER == "DISH NETWORK"
