@@ -7,8 +7,7 @@ get_wizzad_data <- function(my_data){
   
   ################################### Repeat in another category
   #### Mobility
-  aux <- my_data$BRAND %in% c("AT&T: INTERNET", 'AT&T: BUSINESS', 'CLARO: BUSINESS',
-                              'T-MOBILE: BUSINESS')
+  aux <- my_data$BRAND %in% c() # "AT&T: INTERNET", 'AT&T: BUSINESS', 'CLARO: BUSINESS','T-MOBILE: BUSINESS'
   
   data_aux <- my_data[aux,]
   

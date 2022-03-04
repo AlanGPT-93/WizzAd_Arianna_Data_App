@@ -58,8 +58,7 @@ get_arianna_data <- function(my_data){
   #                             'AT&T: BUSINESS', 'CLARO: BUSINESS', 
   #                             'LIBERTY: BUSINESS','T-MOBILE: BUSINESS')
   
-  aux <- my_data$Brand_Change %in% c("AT&T: INTERNET",'AT&T: BUSINESS', 'CLARO: BUSINESS',
-                                     'T-MOBILE: BUSINESS')
+  aux <- my_data$Brand_Change %in% c() # "AT&T: INTERNET",'AT&T: BUSINESS', 'CLARO: BUSINESS', 'T-MOBILE: BUSINESS'
   data_aux <- my_data[aux,]
   
   data_aux$Category <- "Mobility"
